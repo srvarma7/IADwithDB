@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    
+
+}
+<head>
+    <title>
+        Home
+    </title>
+    <link href="~/Scripts/homeIndexStyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    @if (User.Identity.IsAuthenticated)
+    {
+
+    <div class="jumbotron">
+        <h2>Hello, @User.Identity.Name</h2>
+        <h3>Click on the link below to start booking you ride.</h3>
+        <p>
+            <a href="https://localhost:44335/Account/Login" class="btn btn-primary btn-lg">Book Now &raquo;</a>
+        </p>
+        <h3>If you have any questions please contact us.</h3>
+        <p>
+            <a href="https://localhost:44335/Email/Send_Email" class="btn btn-primary btn-lg">Contact us &raquo;</a>
+        </p>
+    </div>
+        <div class="container">
+            <div class="card">
+
+                <div class="face face1">
+                    <div class="content">
+                        <h2>Special discounts Available</h2>
+                        <p>
+                            Now you can fly for much lower prices.
+                            BookyMyFlights offers available to you. For more details click below.
+                        </p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+
+                <div class="face face2">
+                    <h2>Offers</h2>
+                </div>
+
+                <div class="face face1">
+                    <div class="content">
+                        <h2>Special discounts Available</h2>
+                        <p>
+                            Now you can fly for much lower prices.
+                            BookyMyFlights offers available to you. For more details click below.
+                        </p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+
+                <div class="face face2">
+                    <h2>Offers</h2>
+                </div>
+
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="jumbotron">
+            <h1> Welcome to BookMyFlights - Stranger</h1>
+            <h2> Please Log in or Register to start your booking with us</h2>
+            <p>
+                <a href="https://localhost:44335/Account/Login" class="btn btn-primary btn-lg">Log in &raquo;</a>
+                <a href="https://localhost:44335/Account/Register" class="btn btn-primary btn-lg">Register &raquo;</a>
+            </p>
+        </div>
+    }
+</body>

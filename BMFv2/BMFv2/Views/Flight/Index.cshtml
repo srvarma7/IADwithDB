@@ -1,0 +1,82 @@
+﻿@model IEnumerable<BMFv2.Models.Flight>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Source)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Source_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destination_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fare)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfSeatsLeft)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfFlight)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FlightId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Source)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Destination)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Source_time)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Destination_time)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Duration)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fare)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NumberOfSeatsLeft)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateOfFlight)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.FlightId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.FlightId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.FlightId })
+    </td>
+</tr>
+}
+
+</table>

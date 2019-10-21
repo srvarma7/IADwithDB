@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+
+<address>
+    BookMyFlights<br />
+    Melbourne, Vic 98052-6399<br />
+    <abbr title="Phone Number">Phone:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">BMFSupport@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">BMFMarketing@example.com</a>
+</address>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px; /* The height is 400 pixels */
+            width: 100%; /* The width is the width of the web page */
+        }
+    </style>
+</head>
+<body>
+    @*GOOGLE API*@
+    <h3>Our office location</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+
+        //MORE DETAILS
+        //https://stackoverflow.com/questions/48258418/how-to-set-center-and-zoom-drawing-a-flight-path-through-a-google-map-api-js
+        //https://www.pubnub.com/blog/javascript-google-maps-api-flight-paths/
+        //https://www.youtube.com/watch?v=bTLupXfTKF8
+
+
+        //FOR DYNAMIC CHARTS
+        //https://www.youtube.com/watch?v=AqayTPADGsg
+        //https://canvasjs.com/asp-net-mvc-charts/dynamic-live-column-chart/
+        //https://www.youtube.com/watch?v=tvglwKb2FzA
+
+        //LIVE USERS
+        //https://mrojas.ghost.io/track-current-users-on-asp-net-mvc-application/
+        //https://stackoverflow.com/questions/8687066/how-can-i-count-the-online-users-in-my-application
+
+        //SignalR
+        //WORKING
+        //https://www.youtube.com/watch?v=EKv39fGfHEY
+        //https://www.red-gate.com/simple-talk/dotnet/asp-net/tracking-online-users-with-signalr/
+
+        //https://stackoverflow.com/questions/47484742/display-online-userlist-using-signalr
+        //https://www.red-gate.com/simple-talk/dotnet/asp-net/tracking-online-users-with-signalr/
+        //https://docs.microsoft.com/en-us/aspnet/signalr/overview/guide-to-the-api/mapping-users-to-connections
+        //https://github.com/thuyvk/UserOnlineCounterMVCSignalR
+        //http://lonetechie.com/2012/12/24/who-is-online-with-signalr-a-sample-project/
+        //http://hamidmosalla.com/2016/02/23/how-to-show-currently-online-users-members-using-asp-net-mvc-and-identity/
+        //https://www.codeproject.com/articles/536514/signalr-online-counter-sample
+
+
+
+
+        // Initialize and add the map
+        function initMaps() {
+          // The location of Uluru
+          var uluru = {lat: -37.814, lng: 144.96299999999997};
+          // The map, centered at Uluru
+          var map = new google.maps.Map(
+              document.getElementById('map'), {zoom: 13, center: uluru});
+          // The marker, positioned at Uluru
+          var marker = new google.maps.Marker({position: uluru, map: map, animation:google.maps.Animation.BOUNCE});
+        }
+
+        //FOR FLIGHT PATH
+        function initMap() {
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 6,
+              center: { lat: -36, lng: 148 }
+            });
+
+            var flightPlanCoordinates = [
+              {lat: -37.814, lng: 144.96299999999997},
+              {lat: -33.8548157, lng: 151.2164539}
+            ];
+            var flightPath = new google.maps.Polyline({
+              path: flightPlanCoordinates,
+              geodesic: true,
+              strokeColor: '#FF0000',
+              strokeOpacity: 1.0,
+              strokeWeight: 2
+            });
+
+            flightPath.setMap(map);
+        }
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTvrkr3VQOgerSbNmCxCBFBIdjMd3vTL8&callback=initMap">
+    </script>
+</body>
+</html>
