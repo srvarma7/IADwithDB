@@ -11,48 +11,68 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ReviewId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RatingComment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Booking.Id)
-        </th>
-        <th></th>
-    </tr>
+    <thead>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ReviewId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Rating)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.RatingComment)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Booking.Id)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ReviewId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ReviewId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ReviewId })
-    </td>
-</tr>
-}
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RatingComment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking.Id)
+            </th>
+            <th></th>
+        </tr>
+
+    </thead>
+
+    @foreach (var item in Model)
+    {
+<tbody>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RatingComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Booking.Id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ReviewId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ReviewId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ReviewId })
+        </td>
+    </tr>
+</tbody>
+    }
 
 </table>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
+    @Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
+    <script>
+$(document).ready(function () {
+                    $('.table').DataTable();
+                });</script>
+}
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css"
+      rel="stylesheet" />

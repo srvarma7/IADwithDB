@@ -11,72 +11,90 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FlightId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Source)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Destination)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Source_time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Destination_time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Duration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fare)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumberOfSeatsLeft)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfFlight)
-        </th>
-        <th></th>
-    </tr>
+    <thead>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.FlightId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Source)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Destination)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Source_time)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Destination_time)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Duration)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Fare)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NumberOfSeatsLeft)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DateOfFlight)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.FlightId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.FlightId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.FlightId })
-    </td>
-</tr>
-}
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Source)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Source_time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination_time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfSeatsLeft)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfFlight)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Source)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Source_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destination_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfSeatsLeft)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfFlight)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FlightId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.FlightId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.FlightId })
+            </td>
+        </tr>
+    </tbody>
+    }
 
 </table>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
+    @Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
+    <script>
+$(document).ready(function () {
+                    $('.table').DataTable();
+                });</script>
+}
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css"
+      rel="stylesheet" />
