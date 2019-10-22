@@ -10,6 +10,8 @@ using BMFv2.Models;
 
 namespace BMFv2.Controllers
 {
+    [RequireHttps]
+    [Authorize]
     public class FlightController : Controller
     {
         private BMFEntities db = new BMFEntities();

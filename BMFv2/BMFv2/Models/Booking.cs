@@ -11,7 +11,8 @@ namespace BMFv2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Booking
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,11 +21,29 @@ namespace BMFv2.Models
             this.Reviews = new HashSet<Review>();
         }
     
+        [Required]
+        [Display(Name = "Booking Id")]
         public string BookingId { get; set; }
+
+        [Required]
+        [Display(Name = "Booking Date")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> BookingDate { get; set; }
+
+        [Required]
+        [Display(Name = "Amount")]
         public Nullable<double> AmountPaid { get; set; }
+
+        [Required]
+        [Display(Name = "No of guests")]
         public Nullable<int> NoOfGuests { get; set; }
+
+        [Required]
+        [Display(Name = "User ID")]
         public string Id { get; set; }
+
+        [Required]
+        [Display(Name = "Flight Id")]
         public string FlightId { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }

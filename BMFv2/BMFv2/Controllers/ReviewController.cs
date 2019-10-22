@@ -10,6 +10,8 @@ using BMFv2.Models;
 
 namespace BMFv2.Controllers
 {
+    [RequireHttps]
+    [Authorize]
     public class ReviewController : Controller
     {
         private BMFEntities db = new BMFEntities();
@@ -39,7 +41,7 @@ namespace BMFv2.Controllers
         // GET: Review/Create
         public ActionResult Create()
         {
-            ViewBag.Id = new SelectList(db.AspNetUsers, "Id", "Id");
+            ViewBag.Id = new SelectList(db.AspNetUsers, "Id", "Email");
             ViewBag.BookingId = new SelectList(db.Bookings, "BookingId", "BookingId");
             return View();
         }

@@ -38,6 +38,13 @@ namespace BMFv2.Controllers
             return View();
         }
 
+        public ActionResult Directions()
+        {
+            ViewBag.Message = "Your directions page.";
+
+            return View();
+        }
+
         public ActionResult OnlineUsers()
         {
             ViewBag.Message = "Your online users page.";

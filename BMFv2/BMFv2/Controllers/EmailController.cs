@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace BMFv2.Controllers
 {
+    [RequireHttps]
     public class EmailController : Controller
     {
         // GET: Email

@@ -19,7 +19,11 @@ namespace BMFv2.Controllers
         {
             return View();
         }
-        
+
+        public ActionResult Success()
+        {
+            return View();
+        }
         //Lecture Slides
         [HttpPost]
         public async Task<ActionResult> Send(SendEmailWithFileViewModel model)
@@ -27,10 +31,17 @@ namespace BMFv2.Controllers
             if (ModelState.IsValid)
             {
                 var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                String receivers = model.FromName;
+                List<String> toEmailList = receivers.Split(',').ToList();
                 var message = new MailMessage();
-                message.To.Add(new MailAddress("ckal0008@student.monash.edu"));
-                message.To.Add(new MailAddress("srvarma7@gmail.com"));
-                message.To.Add(new MailAddress("shriyarox@gmail.com"));
+                for (int i = 0;  i < toEmailList.Count(); i++)
+                {
+                    message.To.Add(new MailAddress(toEmailList.ElementAt<String>(i)));
+                }
+                var len = receivers.Length;
+                //message.To.Add(new MailAddress("ckal0008@student.monash.edu")); 
+                //message.To.Add(new MailAddress("srvarma7@gmail.com"));
+                //message.To.Add(new MailAddress("shriyarox@gmail.com"));
                 message.From = new MailAddress("ckal0008@student.monash.edu");
                 message.Subject = "Your email subject";
                 message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
@@ -56,7 +67,7 @@ namespace BMFv2.Controllers
                     await smtp.SendMailAsync(message);
                 }
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Success");
         }
     }
 }

@@ -11,13 +11,29 @@ namespace BMFv2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Review
     {
+
+        [Required]
+        [Display(Name = "Review Id")]
         public string ReviewId { get; set; }
+
+        [Required]
+        [Display(Name = "Rating")]
         public Nullable<int> Rating { get; set; }
+
+        [Required]
+        [Display(Name = "Comment")]
         public string RatingComment { get; set; }
+
+        [Required]
+        [Display(Name = "User Id")]
         public string Id { get; set; }
+
+        [Required]
+        [Display(Name = "Booking Id")]
         public string BookingId { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }

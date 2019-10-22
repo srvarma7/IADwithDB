@@ -11,7 +11,8 @@ namespace BMFv2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Flight
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,15 +20,32 @@ namespace BMFv2.Models
         {
             this.Bookings = new HashSet<Booking>();
         }
-    
+
+        [Required]
+        [Display(Name = "Flight Id")]
         public string FlightId { get; set; }
+        [Required]
+        [Display(Name = "Source")]
         public string Source { get; set; }
+
+        [Required]
+        [Display(Name = "Destination")]
         public string Destination { get; set; }
+
+        [Required]
+        [Display(Name = "Source Time")]
         public Nullable<System.TimeSpan> Source_time { get; set; }
+
+        [Required]
+        [Display(Name = "Destination Time")]
         public Nullable<System.TimeSpan> Destination_time { get; set; }
         public Nullable<int> Duration { get; set; }
         public Nullable<int> Fare { get; set; }
         public Nullable<int> NumberOfSeatsLeft { get; set; }
+
+        [Required]
+        [Display(Name = "Date of Flight")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateOfFlight { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

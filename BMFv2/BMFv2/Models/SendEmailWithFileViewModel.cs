@@ -8,7 +8,8 @@ namespace BMFv2.Models
 {
     public class SendEmailWithFileViewModel
     {
-        [Required(ErrorMessage = "Please enter your Name.")]
+        [Display(Name = "To Email")]
+        [Required(ErrorMessage = "Please enter email.")]
         public string FromName { get; set; }
 
         [Display(Name = "Email address")]
@@ -16,6 +17,7 @@ namespace BMFv2.Models
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string FromEmail { get; set; }
 
+        [Display(Name = "Message")]
         [Required(ErrorMessage = "Please enter a Message.")]
         public string Message { get; set; }
 

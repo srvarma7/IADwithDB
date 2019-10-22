@@ -571,6 +571,7 @@
     <Content Include="Views\Flight\Details.cshtml" />
     <Content Include="Views\Flight\Edit.cshtml" />
     <Content Include="Views\Flight\Index.cshtml" />
+    <Content Include="Views\Home\Directions.cshtml" />
     <None Include="Views\Home\invoice.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -623,6 +624,7 @@
     <Content Include="Views\Review\Details.cshtml" />
     <Content Include="Views\Review\Edit.cshtml" />
     <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\SendEmailWithFile\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

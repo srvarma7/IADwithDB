@@ -34,28 +34,33 @@
                                    role="button" aria-expanded="false">Manage<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu" id="myTab">
                                     <li role="presentation">
-                                        @Html.ActionLink("Users", "Index", "AspNetUsers")
+                                        @Html.ActionLink("User", "Index", "User")
                                     </li>
                                     <li role="presentation">
-                                        @Html.ActionLink("Flights", "Index", "Flights")
+                                        @Html.ActionLink("Flight", "Index", "Flight")
                                     </li>
                                     <li role="presentation">
-                                        @Html.ActionLink("Bookings", "Index", "Bookings")
+                                        @Html.ActionLink("Booking", "Index", "Booking")
                                     </li>
                                     <li role="presentation">
-                                        @Html.ActionLink("Bookings", "Index", "Bookings")
+                                        @Html.ActionLink("Review", "Index", "Review")
                                     </li>
                                 </ul>
                             </li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Directions", "Directions", "Home")</li>
+
                         }
                         //LOGGED-IN USER MENU
                         else
                         {
-                            <li>@Html.ActionLink("My bookings", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Booking", "Index", "Booking")</li>
+                            <li>@Html.ActionLink("Review", "Index", "Review")</li>
                             <li>@Html.ActionLink("Offers", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Directions", "Directions", "Home")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Have any Questions?", "Index", "SendEmailWithFile")</li>
+                            <li>@Html.ActionLink("Send emil with attachment", "Index", "SendEmailWithFile")</li>
                         }
                     }
                     else
@@ -63,12 +68,8 @@
                         //GENERAL USER MENU
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Have any Questions?", "Index", "SendEmailWithFile")</li>
-                        <li>@Html.ActionLink("User", "Index", "User")</li>
-                        <li>@Html.ActionLink("Flight", "Index", "Flight")</li>
-                        <li>@Html.ActionLink("Booking", "Index", "Booking")</li>
-                        <li>@Html.ActionLink("Review", "Index", "Review")</li>
-
+                        <li>@Html.ActionLink("Directions", "Directions", "Home")</li>
+                        <li>@Html.ActionLink("Send emil with attachment", "Index", "SendEmailWithFile")</li>
                     }
 
                 </ul>
