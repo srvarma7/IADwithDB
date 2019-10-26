@@ -10,8 +10,20 @@
 <body>
     @if (User.Identity.IsAuthenticated)
     {
-
     <div class="jumbotron">
+        <img src="~/Media/flight.jpg" />
+
+        <style>
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            img:hover {
+                -webkit-transform: scaleX(-1);
+                transform: scaleX(-1);
+            }
+        </style>
         <h2>Hello, @User.Identity.Name</h2>
         <h3>Click on the link below to start booking you ride.</h3>
         <p>
@@ -19,7 +31,10 @@
         </p>
         <h3>If you have any questions please contact us.</h3>
         <p>
-            <a href="https://localhost:44335/Email/Send_Email" class="btn btn-primary btn-lg">Contact us &raquo;</a>
+            <a href="https://localhost:44335/SendEmailWithFile" class="btn btn-primary btn-lg">Contact us &raquo;</a>
+        </p>
+        <p>
+            <a href="~/Charts.aspx">Charts</a>
         </p>
     </div>
         <div class="container">
@@ -60,13 +75,27 @@
     }
     else
     {
-        <div class="jumbotron">
-            <h1> Welcome to BookMyFlights - Stranger</h1>
-            <h2> Please Log in or Register to start your booking with us</h2>
-            <p>
-                <a href="https://localhost:44335/Account/Login" class="btn btn-primary btn-lg">Log in &raquo;</a>
-                <a href="https://localhost:44335/Account/Register" class="btn btn-primary btn-lg">Register &raquo;</a>
-            </p>
-        </div>
-    }
-</body>
+<div class="jumbotron">
+
+    <img src="~/Media/flight.jpg" />
+    <style>
+        img {
+        width: 100%;
+        height: auto;
+        }
+
+        img:hover {
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+        }
+    </style>
+
+    <h1> Welcome to BookMyFlights - Stranger</h1>
+    <h2> Please Log in or Register to start your booking with us</h2>
+    <p>
+        <a href="https://localhost:44335/Account/Login" class="btn btn-primary btn-lg">Log in &raquo;</a>
+        <a href="https://localhost:44335/Account/Register" class="btn btn-primary btn-lg">Register &raquo;</a>
+    </p>
+</div>
+        }
+    </body>

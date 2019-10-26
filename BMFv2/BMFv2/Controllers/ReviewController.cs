@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BMFv2.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BMFv2.Controllers
 {
@@ -19,8 +20,19 @@ namespace BMFv2.Controllers
         // GET: Review
         public ActionResult Index()
         {
-            var reviews = db.Reviews.Include(r => r.AspNetUser).Include(r => r.Booking);
-            return View(reviews.ToList());
+            bool isAdmin = User.IsInRole("Admin");
+            if (!isAdmin)
+            {
+                var user = User.Identity.GetUserId();
+                var reviews = db.Reviews.Where(s => s.AspNetUser.Id == user).ToList();
+                return View(reviews.ToList());
+
+            }
+            else
+            {
+                var reviews = db.Reviews.Include(r => r.AspNetUser).Include(r => r.Booking);
+                return View(reviews.ToList());
+            }
         }
 
         // GET: Review/Details/5

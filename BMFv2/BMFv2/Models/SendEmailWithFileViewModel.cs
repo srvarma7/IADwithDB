@@ -12,7 +12,7 @@ namespace BMFv2.Models
         [Required(ErrorMessage = "Please enter email.")]
         public string FromName { get; set; }
 
-        [Display(Name = "Email address")]
+        [Display(Name = "Your Email")]
         [Required(ErrorMessage = "Please enter an email address.")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string FromEmail { get; set; }

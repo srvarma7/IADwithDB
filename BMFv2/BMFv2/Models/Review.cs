@@ -21,7 +21,7 @@ namespace BMFv2.Models
         public string ReviewId { get; set; }
 
         [Required]
-        [Range(0.1,5,ErrorMessage ="Enter a number between 1 - 5")]
+        [Range(1.0,5,ErrorMessage ="Enter a number between 1 - 5")]
         [Display(Name = "Rating")]
         public Nullable<int> Rating { get; set; }
 

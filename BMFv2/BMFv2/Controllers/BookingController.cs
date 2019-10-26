@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BMFv2.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BMFv2.Controllers
 {
@@ -19,8 +20,20 @@ namespace BMFv2.Controllers
         // GET: Booking
         public ActionResult Index()
         {
-            var bookings = db.Bookings.Include(b => b.AspNetUser).Include(b => b.Flight);
-            return View(bookings.ToList());
+            bool isAdmin = User.IsInRole("Admin");
+            if (!isAdmin)
+            {
+                var user = User.Identity.GetUserId();
+                var bookingsList = db.Bookings.Where(s => s.AspNetUser.Id == user).ToList();
+                // var bookings = db.Bookings.Include(b => b.AspNetUser).Include(b => b.Flight);
+                return View(bookingsList.ToList());
+
+            }
+            else
+            {
+                var bookingsList = db.Bookings.Include(b => b.AspNetUser).Include(b => b.Flight);
+                return View(bookingsList.ToList());
+            }
         }
 
         // GET: Booking/Details/5
@@ -53,15 +66,36 @@ namespace BMFv2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "BookingId,BookingDate,AmountPaid,NoOfGuests,Id,FlightId")] Booking booking)
         {
+            Flight fli = new Flight();
+            var flightList = db.Flights.ToList();
+
             if (ModelState.IsValid)
             {
-                db.Bookings.Add(booking);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                foreach (Flight f in flightList)
+                {
+                    if (f.FlightId == booking.FlightId)
+                    {
+                        var number = f.NumberOfSeatsLeft;
+                        if (number >= booking.NoOfGuests)
+                        {
+                            f.NumberOfSeatsLeft = number - booking.NoOfGuests;
+                            db.Entry(f).State = EntityState.Modified;
+                            db.Bookings.Add(booking);
+                            db.SaveChanges();
+                            return RedirectToAction("Index");
+                        }
+                        else
+                        {
+                            ViewBag.message = "There are only " + number + " available";
+                            ViewBag.Id = new SelectList(db.AspNetUsers, "Id", "Email");
+                            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId");
+                            return View();
+                        }
+                    }
+                }
             }
-
             ViewBag.Id = new SelectList(db.AspNetUsers, "Id", "Email", booking.Id);
-            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "Source", booking.FlightId);
+            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId", booking.FlightId);
             return View(booking);
         }
 

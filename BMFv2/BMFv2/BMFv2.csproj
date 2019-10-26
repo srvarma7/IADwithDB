@@ -99,6 +99,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -228,6 +229,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Charts.aspx.cs">
+      <DependentUpon>Charts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts.aspx.designer.cs">
+      <DependentUpon>Charts.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
@@ -277,12 +285,20 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\EmailSender.cs" />
     <Compile Include="Utils\EmailSenderWithFile.cs" />
+    <Compile Include="Views\Home\BookingsChart.aspx.cs">
+      <DependentUpon>BookingsChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\BookingsChart.aspx.designer.cs">
+      <DependentUpon>BookingsChart.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\aspnet-BMFv2-20190925040708.mdf" />
     <Content Include="App_Data\aspnet-BMFv2-20190925040708_log.ldf">
       <DependentUpon>aspnet-BMFv2-20190925040708.mdf</DependentUpon>
     </Content>
+    <Content Include="Charts.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -449,6 +465,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Media\black-plane.png" />
+    <Content Include="Media\flight.jpg" />
     <Content Include="Models\BMFmodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BMFmodel.edmx</DependentUpon>
@@ -571,6 +588,7 @@
     <Content Include="Views\Flight\Details.cshtml" />
     <Content Include="Views\Flight\Edit.cshtml" />
     <Content Include="Views\Flight\Index.cshtml" />
+    <Content Include="Views\Home\BookingsChart.aspx" />
     <Content Include="Views\Home\Directions.cshtml" />
     <None Include="Views\Home\invoice.cshtml" />
     <Content Include="Web.config" />

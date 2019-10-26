@@ -49,11 +49,12 @@
                             </li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                             <li>@Html.ActionLink("Directions", "Directions", "Home")</li>
-
-                        }
-                        //LOGGED-IN USER MENU
-                        else
-                        {
+                            <li>@Html.ActionLink("Charts", "BookingsChart.aspx")</li>
+                    
+                    }
+                    //LOGGED-IN USER MENU
+                    else
+                    {
                             <li>@Html.ActionLink("Booking", "Index", "Booking")</li>
                             <li>@Html.ActionLink("Review", "Index", "Review")</li>
                             <li>@Html.ActionLink("Offers", "About", "Home")</li>
@@ -71,7 +72,6 @@
                         <li>@Html.ActionLink("Directions", "Directions", "Home")</li>
                         <li>@Html.ActionLink("Send emil with attachment", "Index", "SendEmailWithFile")</li>
                     }
-
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
