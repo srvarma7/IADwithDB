@@ -8,7 +8,6 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -22,12 +21,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @*checking if the user is logged-in*@
                     @if (User.Identity.IsAuthenticated)
                     {
                         //ADMIN MENUS
                         if (User.IsInRole("Admin"))
                         {
-                            <li>@Html.ActionLink("Admin menu Send Email", "Send_Email", "Email")</li>
+                            <li>@Html.ActionLink("Send emil with attachment", "Index", "SendEmailWithFile")</li>
                             <li>@Html.ActionLink("Generate invoice PDF from URL", "GeneratePDF", "Home")</li>
                             <li>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"
@@ -49,18 +49,16 @@
                             </li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                             <li>@Html.ActionLink("Directions", "Directions", "Home")</li>
-                            <li>@Html.ActionLink("Charts", "BookingsChart.aspx")</li>
-                    
-                    }
-                    //LOGGED-IN USER MENU
-                    else
-                    {
+
+                        }
+                        //LOGGED-IN USER MENU
+                        else
+                        {
                             <li>@Html.ActionLink("Booking", "Index", "Booking")</li>
                             <li>@Html.ActionLink("Review", "Index", "Review")</li>
                             <li>@Html.ActionLink("Offers", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                             <li>@Html.ActionLink("Directions", "Directions", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Send emil with attachment", "Index", "SendEmailWithFile")</li>
                         }
                     }

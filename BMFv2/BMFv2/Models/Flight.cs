@@ -24,6 +24,7 @@ namespace BMFv2.Models
         [Required]
         [Display(Name = "Flight Id")]
         public string FlightId { get; set; }
+
         [Required]
         [Display(Name = "Source")]
         public string Source { get; set; }
@@ -33,19 +34,27 @@ namespace BMFv2.Models
         public string Destination { get; set; }
 
         [Required]
-        [Display(Name = "Source Time")]
+        [Display(Name = "Source time")]
         public Nullable<System.TimeSpan> Source_time { get; set; }
 
         [Required]
-        [Display(Name = "Destination Time")]
+        [Display(Name = "Destination time")]
         public Nullable<System.TimeSpan> Destination_time { get; set; }
+
+        [Required]
+        [Display(Name = "Duration")]
         public Nullable<int> Duration { get; set; }
+
+        [Required]
+        [Display(Name = "Fare")]
         public Nullable<int> Fare { get; set; }
+
+        [Required]
+        [Display(Name = "Seats Left")]
         public Nullable<int> NumberOfSeatsLeft { get; set; }
 
         [Required]
-        [Display(Name = "Date of Flight")]
-        [DataType(DataType.Date)]
+        [Display(Name = "Date of Fligth")]
         public Nullable<System.DateTime> DateOfFlight { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

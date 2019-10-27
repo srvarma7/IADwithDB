@@ -727,3 +727,4 @@ E:\1 backup\IADwithDB\BMFv2\BMFv2\obj\Debug\BMFv2.csproj.CoreCompileInputs.cache
 E:\1 backup\IADwithDB\BMFv2\BMFv2\obj\Debug\BMFv2.csproj.CopyComplete
 E:\1 backup\IADwithDB\BMFv2\BMFv2\obj\Debug\BMFv2.dll
 E:\1 backup\IADwithDB\BMFv2\BMFv2\obj\Debug\BMFv2.pdb
+E:\1 backup\IADwithDB\BMFv2\BMFv2\obj\Debug\BMFv2.csprojAssemblyReference.cache

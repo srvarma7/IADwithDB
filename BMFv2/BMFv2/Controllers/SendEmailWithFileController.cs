@@ -32,13 +32,14 @@ namespace BMFv2.Controllers
             {
                 var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
                 String receivers = model.FromName;
+                //If there are multiple emails in the field it splits the emial and adds them to the list which stores all the emails
                 List<String> toEmailList = receivers.Split(',').ToList();
+                //If there are multiple emails, the mails are added to the message To list
                 var message = new MailMessage();
                 for (int i = 0;  i < toEmailList.Count(); i++)
                 {
                     message.To.Add(new MailAddress(toEmailList.ElementAt<String>(i)));
                 }
-                var len = receivers.Length;
                 //message.To.Add(new MailAddress("ckal0008@student.monash.edu")); 
                 //message.To.Add(new MailAddress("srvarma7@gmail.com"));
                 //message.To.Add(new MailAddress("shriyarox@gmail.com"));
@@ -46,9 +47,10 @@ namespace BMFv2.Controllers
                 message.Subject = "Your email subject";
                 message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
                 message.IsBodyHtml = true;
-
+                //Checks if there is any file being selected.
                 if (model.Upload != null && model.Upload.ContentLength > 0)
                 {
+                    //If selected it is being attached to the message.
                     message.Attachments.Add(new Attachment(model.Upload.InputStream, System.IO.Path.GetFileName(model.Upload.FileName)));
                 }
 

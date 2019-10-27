@@ -21,14 +21,15 @@ namespace BMFv2.Controllers
         public ActionResult Index()
         {
             bool isAdmin = User.IsInRole("Admin");
+            //Displays booking for the current loggedin user
             if (!isAdmin)
             {
                 var user = User.Identity.GetUserId();
                 var bookingsList = db.Bookings.Where(s => s.AspNetUser.Id == user).ToList();
-                // var bookings = db.Bookings.Include(b => b.AspNetUser).Include(b => b.Flight);
                 return View(bookingsList.ToList());
 
             }
+            //If ADMIN displays all the bookings list
             else
             {
                 var bookingsList = db.Bookings.Include(b => b.AspNetUser).Include(b => b.Flight);
@@ -75,6 +76,7 @@ namespace BMFv2.Controllers
                 {
                     if (f.FlightId == booking.FlightId)
                     {
+                        //Checkig for number of seats available for the flight
                         var number = f.NumberOfSeatsLeft;
                         if (number >= booking.NoOfGuests)
                         {
@@ -84,6 +86,7 @@ namespace BMFv2.Controllers
                             db.SaveChanges();
                             return RedirectToAction("Index");
                         }
+                        //If there are not enough seats available it displays an error and redirects
                         else
                         {
                             ViewBag.message = "There are only " + number + " available";
@@ -112,7 +115,7 @@ namespace BMFv2.Controllers
                 return HttpNotFound();
             }
             ViewBag.Id = new SelectList(db.AspNetUsers, "Id", "Email", booking.Id);
-            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "Source", booking.FlightId);
+            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId", booking.FlightId);
             return View(booking);
         }
 
@@ -130,7 +133,7 @@ namespace BMFv2.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Id = new SelectList(db.AspNetUsers, "Id", "Email", booking.Id);
-            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "Source", booking.FlightId);
+            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId", booking.FlightId);
             return View(booking);
         }
 

@@ -15,13 +15,11 @@ namespace BMFv2.Models
 
     public partial class Review
     {
-
         [Required]
         [Display(Name = "Review Id")]
         public string ReviewId { get; set; }
 
         [Required]
-        [Range(1.0,5,ErrorMessage ="Enter a number between 1 - 5")]
         [Display(Name = "Rating")]
         public Nullable<int> Rating { get; set; }
 
@@ -29,11 +27,9 @@ namespace BMFv2.Models
         [Display(Name = "Comment")]
         public string RatingComment { get; set; }
 
-        [Required]
         [Display(Name = "User Id")]
         public string Id { get; set; }
 
-        [Required]
         [Display(Name = "Booking Id")]
         public string BookingId { get; set; }
     

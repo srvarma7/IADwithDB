@@ -69,8 +69,6 @@ namespace BMFv2.Controllers
 
         public ActionResult GeneratePDF()
         {
-            //var PDF = Renderer.RenderHTMLFileAsPdf("https://localhost:44335/Home/About.cshtml");
-            //var PDF = Renderer.RenderHTMLFileAsPdf("C:/Users/Raghu/Desktop/BMF/IAD/BMFv2/BMFv2/Views/Home/Index.cshtml");
             try
             {
                 var Renderer = new IronPdf.HtmlToPdf();
@@ -84,10 +82,8 @@ namespace BMFv2.Controllers
                 return RedirectToAction("PDFGenS");
             }
             catch
-            {
-
-            }
-
+            {}
+            //If there is an error it redirects to the page says generation failed
             return RedirectToAction("PDFGenF");
         }
     }

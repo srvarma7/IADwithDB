@@ -11,7 +11,6 @@ namespace BMFv2.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class AspNetUser
     {
@@ -21,15 +20,8 @@ namespace BMFv2.Models
             this.Bookings = new HashSet<Booking>();
             this.Reviews = new HashSet<Review>();
         }
-
-
-        [Required]
-        [Display(Name = "User Id")]
+    
         public string Id { get; set; }
-
-        [Required]
-        [Display(Name = "Email Id")]
-        [EmailAddress]
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
         public string PasswordHash { get; set; }

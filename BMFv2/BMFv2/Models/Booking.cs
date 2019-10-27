@@ -20,14 +20,13 @@ namespace BMFv2.Models
         {
             this.Reviews = new HashSet<Review>();
         }
-    
+
         [Required]
         [Display(Name = "Booking Id")]
         public string BookingId { get; set; }
 
         [Required]
-        [Display(Name = "Booking Date")]
-        [DataType(DataType.Date)]
+        [Display(Name = "Date")]
         public Nullable<System.DateTime> BookingDate { get; set; }
 
         [Required]
@@ -35,14 +34,12 @@ namespace BMFv2.Models
         public Nullable<double> AmountPaid { get; set; }
 
         [Required]
-        [Display(Name = "No of guests")]
+        [Display(Name = "Guests")]
         public Nullable<int> NoOfGuests { get; set; }
 
-        [Required]
-        [Display(Name = "User ID")]
+        [Display(Name = "User Id")]
         public string Id { get; set; }
 
-        [Required]
         [Display(Name = "Flight Id")]
         public string FlightId { get; set; }
     
