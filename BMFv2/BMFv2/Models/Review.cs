@@ -21,6 +21,7 @@ namespace BMFv2.Models
 
         [Required]
         [Display(Name = "Rating")]
+        [Range(1,5)]
         public Nullable<int> Rating { get; set; }
 
         [Required]

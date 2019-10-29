@@ -20,5 +20,8 @@
         </asp:Chart>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [BookingId], [NoOfGuests] FROM [Booking]"></asp:SqlDataSource>
     </form>
+
+    <h4>&emsp;&emsp;&emsp;&emsp;X-axis : Booking Id</h4>
+    <h4>&emsp;&emsp;&emsp;&emsp;Y-axis : Number of seats Booked </h4>
 </body>
 </html>

@@ -89,7 +89,7 @@ namespace BMFv2.Controllers
                         //If there are not enough seats available it displays an error and redirects
                         else
                         {
-                            ViewBag.message = "There are only " + number + " available";
+                            ViewBag.message = "There are only " + number + " seats left";
                             ViewBag.Id = new SelectList(db.AspNetUsers, "Id", "Email");
                             ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId");
                             return View();
