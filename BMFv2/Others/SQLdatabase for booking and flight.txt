@@ -1,0 +1,39 @@
+CREATE TABLE [dbo].[Flight]
+(
+    [FlightId] NVARCHAR (128) NOT NULL PRIMARY KEY,  
+    [Source] NVARCHAR (MAX) NOT NULL, 
+    [Destination] NVARCHAR (MAX) NOT NULL, 
+    [Source_time] TIME NULL, 
+    [Destination_time] TIME NULL, 
+    [Duration] INT NULL, 
+    [Fare] INT NULL, 
+    [NumberOfSeatsLeft] INT NULL, 
+    [DateOfFlight] DATE NULL, 
+)
+
+CREATE TABLE [dbo].[Booking]
+(
+    [BookingId] NVARCHAR (128) NOT NULL PRIMARY KEY,
+    [BookingDate] DATE NULL,  
+    [AmountPaid] FLOAT NULL, 
+    [NoOfGuests] INT NULL, 
+    [Id] NVARCHAR(128) NULL, 
+    [FlightId] NVARCHAR(128) NULL, 
+    CONSTRAINT bk_user FOREIGN KEY (Id)
+	REFERENCES dbo.AspNetUsers(Id),
+    CONSTRAINT bk_flight FOREIGN KEY (FlightId)
+	REFERENCES dbo.Flight(FlightId)
+)
+
+CREATE TABLE [dbo].[Review]
+(
+    [ReviewId] NVARCHAR (128) NOT NULL PRIMARY KEY, 
+    [Rating] INT NULL,
+    [RatingComment] NVARCHAR(10) NULL,
+    [Id] NVARCHAR(128) NULL, 
+    [BookingId] NVARCHAR(128) NULL, 
+    CONSTRAINT review_user FOREIGN KEY (Id)
+	REFERENCES dbo.AspNetUsers(Id),
+    CONSTRAINT review_booking FOREIGN KEY (BookingId)
+	REFERENCES dbo.Booking(BookingId)
+)
